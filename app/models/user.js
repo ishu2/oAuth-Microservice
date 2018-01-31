@@ -9,11 +9,11 @@ var userSchema=new mongoose.Schema({
 });
 
 userSchema.methods.generateHash=function(password){
-    return bcrypt.hashSync(password,bcrypt.genSalt(9));
+    return bcrypt.hashSync(password,bcrypt.genSaltSync(9));
 }
 
 userSchema.methods.validPassword=function(password){
     return bcrypt.compareSync(password,this.local.password);
 }
 
-moduleexports=mongoose.model('User',userSchema);
+module.exports=mongoose.model('User',userSchema);
